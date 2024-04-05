@@ -1,0 +1,92 @@
+<div class="bg-white border d-flex flex-wrap align-items-center" id="container" style="border-radius: 8px">
+    <div *ngIf="order" class="h3 m-4">
+        <i class="bi bi-receipt-cutoff"></i> Chi tiết đơn hàng {{ order.orderId }}
+    </div>
+    <div class="container border m-3" style="border-radius: 4px;">
+        <table class="table table-border align-items-center">
+            <thead>
+                <tr>
+                    <th style="text-align: center">STT</th>
+                    <th style="text-align: center">Sản phẩm</th>
+                    <th style="text-align: center">Số lượng</th>
+                    <th style="text-align: center">Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="cart-item" *ngFor="let item of orderDetail; let i = index">
+                    <td style="text-align: center">{{ i + 1 }}</td>
+                    <td style="text-align: center">
+                        <a>
+                            <div class="product-infor-cart">
+                                <img [src]="productList[i].imgPath1" alt="" style="width: 112px" />
+                                <div class="name-product-cart">
+                                    {{ productList[i].productName }}
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td style="text-align: center">{{ item.quantity }}</td>
+                    <td style="text-align: center">
+                        {{ item.price | currency : "VND" : ""}} VNĐ
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <div class="row d-flex order-infor">
+                <div class="col-md-6">
+                    <table class="table table-borderless">
+                        <tbody class="totals-bill">
+                            <tr>
+                                <td><span class="text-muted">Tên khách hàng:</span></td>
+                                <td><span>{{username}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">Số điện thoại:</span></td>
+                                <td><span>{{userphone}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">Ngày đặt:</span></td>
+                                <td><span>{{ orderdate | date : "hh:mm:ss" }} {{ orderdate | date : "fullDate" }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">Địa chỉ giao hàng:</span></td>
+                                <td><span>{{orderad}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- <a href="#">Quay lại</a> -->
+                </div>
+
+                <div class="col-md-6">
+                    <table class="table table-borderless">
+                        <tbody class="totals-bill">
+                            <tr>
+                                <td><span class="text-muted">Phí vận chuyển:</span></td>
+                                <td><span>0 ₫</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text-muted">Thuế:</span></td>
+                                <td><span class="text-success">+ 10%</span></td>
+                            </tr>
+                            <tr class="border-top border-bottom">
+                                <td><span class="font-weight-bold">Tổng tiền: </span></td>
+                                <td><span>{{ orderprice | currency : "VND" : ""}} VNĐ</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="order-action">
+                        <button class="btn btn-success" (click)="confirmOrder(orderId)"
+                            *ngIf="order.orderStatus == 0">Xác
+                            nhận đơn hàng</button>
+                        <button class="btn btn-success" *ngIf="order.orderStatus == 1" disabled>Đã xác nhận</button>
+                        <button class="btn btn-danger" *ngIf="order.orderStatus == 2" disabled>Đã hủy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

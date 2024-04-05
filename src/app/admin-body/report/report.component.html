@@ -1,0 +1,66 @@
+<div class="container text-center m-2 bg-body-secondary">
+    <div class="row mb-5" style="justify-content: center;">
+        <div class="card m-2" style="width: 25rem;">
+            <div class="card-body">
+                <h2>Tổng số đơn hàng</h2>
+                <p class="card-text">{{this.orderListLength}}</p>
+            </div>
+        </div>
+
+        <div class="card m-2" style="width: 25rem;">
+            <div class="card-body">
+                <h2>Tổng doanh thu</h2>
+                <p class="card-text">{{this.orderPrice}}</p>
+            </div>
+        </div>
+
+
+        <div class="card m-2" style="width: 25rem;">
+            <div class="card-body">
+                <h2>Số lượng người dùng</h2>
+                <p class="card-text">{{this.cusListLength}}</p>
+            </div>
+        </div>
+
+
+        <div class="card m-2" style="width: 25rem;">
+            <div class="card-body">
+                <h2>Số lượng sản phẩm bán ra</h2>
+                <p class="card-text">{{this.orderProduct}}</p>
+            </div>
+        </div>
+
+        <div class="card m-2" style="width: 25rem;" *ngFor="let item of orderDetailList">
+            <div class="card-body">
+                <h2>Sản phẩm bán ra nhiều nhất</h2>
+                <p class="card-text">{{item.productId}}</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="option mb-3" style="align-items: center;">
+            <input class="custom-calendar me-2 p-2" style="border-radius: 8px;" type="date" [(ngModel)]="startDate">
+            <input class="custom-calendar me-2 p-2" style="border-radius: 8px;" type="date" [(ngModel)]="endDate">
+            <button class="border-3 btn btn-info p-3" style="border-radius: 8px;" (click)="getSalesDate()">Lấy danh sách
+                sản phẩm</button>
+        </div>
+        <div class="colum text-center text-bold border mb-4">
+            <div class="row mt-3" style="align-items: center;">
+                <div class="col-lg-2">Mã sản phẩm</div>
+                <div class="col-lg-4">Tên sản phẩm</div>
+                <div class="col-lg-3">Giá bán ra</div>
+                <div class="col-lg-3">Tổng số lượng</div>
+            </div>
+            <br>
+        </div>
+        <div class="items mb-3" *ngFor="let item of productStatistics">
+            <div class="row mt-3" style="align-items: center;">
+                <div class="col-lg-2">{{item.productId}}</div>
+                <div class="col-lg-4">{{item.productName}}</div>
+                <div class="col-lg-3">{{item.totalPrice | currency : "VND" : "" }} VNĐ</div>
+                <div class="col-lg-3">{{item.totalQuantity }}</div>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>

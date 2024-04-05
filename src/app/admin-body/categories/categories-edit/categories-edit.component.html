@@ -1,0 +1,22 @@
+<form (ngSubmit)="EditCate()">
+    <div class="detail-admin ">
+        <div class="projects">
+            <div class="card-body">
+                <span>Tên danh mục</span>
+                <input type="text" [(ngModel)]="cate.categoryName" name="categoryName" [value]="cate.categoryName"
+                    class="form-control" style="height: 40px; padding-left: 5px;" /><br>
+                <label class="form-control" ngModel name="createdDate" type="text" aria-label="Disabled input example"
+                    disabled readonly>
+                    {{currentDate | date : "hh:mm:ss" }}
+                    {{ currentDate | date : "fullDate" }}
+                </label><br>
+                <!-- <input class="form-control" [(ngModel)]="cate.createdDate" name="createdDate" type="text"
+                    [value]="currentDate" aria-label="Disabled input example" disabled readonly><br> -->
+            </div>
+            <span style="color: red;"></span>
+            <button type="submit" class="btn btn-warning" style="width:100%;margin-top: 20px; height: 35px;">Cập
+                nhật</button>
+            <!-- <button  class="btn btn-danger" style="width: 29%; margin-left: 5px; height: 35px;">Xóa</button> -->
+        </div>
+    </div>
+</form>

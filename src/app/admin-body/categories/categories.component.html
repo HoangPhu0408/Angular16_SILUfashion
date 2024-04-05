@@ -1,0 +1,31 @@
+<div style="height: auto;">
+    <div>
+        <h2>Danh sách danh mục</h2>
+
+        <button class="btn btn-success" routerLink="/categories-create">
+            Thêm danh mục
+        </button>
+        <div class="row text-center mt-4" style="font-weight: bold;">
+            <div class="col-lg-3">Tên danh mục</div>
+            <div class="col-lg-2">Công cụ</div>
+        </div>
+    </div>
+    <div class="product-list-items">
+        <!-- item-product -->
+        <div class="border mb-2 py-2 items" *ngFor="let item of category">
+            <div class="row text-center" style="align-items: center;">
+                <div class="col-lg-3">{{item.categoryName}}</div>
+
+                <div class="col-lg-2">
+                    <button class="btn btn-info m-2"><a class="text-decoration-none text-white"
+                            [routerLink]="['/categories-edit',item.categoryId]"><i
+                                class="bi bi-gear-wide-connected"></i> Sửa</a></button>
+                    <button class="btn btn-danger"><a class="text-decoration-none text-white"
+                            [routerLink]="['/categories-delete',item.categoryId]"><i class="bi bi-trash-fill">
+                                Xóa</i></a></button>
+                </div>
+            </div>
+        </div>
+        <!-- item-product -->
+    </div>
+</div>

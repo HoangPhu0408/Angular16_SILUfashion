@@ -1,0 +1,47 @@
+<div class="container pt-4" style="margin-top: 180px;">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 login-modal login-box ">
+            <form #f="ngForm" (ngSubmit)="onSignUp(f)">
+                <div class="">
+                    <div class="register-form text-center">
+                        <h2 class="mb-4"><strong>ĐĂNG KÍ TÀI KHOẢN MỚI</strong></h2>
+                        <div class="input-box">
+                            <input type="text" class="form-control mb-3 py-3" placeholder="Tên khách hàng" ngModel
+                                name="userName">
+                        </div>
+                        <div class="input-box">
+                            <input name="pass" minlength="8" type="password" class="form-control py-3"
+                                placeholder="Nhập mật khẩu" ngModel name="passWord">
+                            <div *ngIf="showError && pass.length < 8">
+                                <span class="text-danger">Mật khẩu phải có ít nhất 8 ký tự.</span>
+                            </div>
+                        </div>
+                        <div class="input-box  mt-3">
+                            <input name="passcon" minlength="8" type="password" class="form-control py-3"
+                                placeholder="Nhập lại mật khẩu" ngModel name="confirmPassword">
+                            <div *ngIf="showError && passcon.length < 8">
+                                <span class="text-danger">Mật khẩu phải có ít nhất 8 ký tự.</span>
+                            </div>
+                        </div>
+                        <div class="input-box mt-3">
+                            <input name="phone" type="text" class="form-control py-3" placeholder="Số điện thoại"
+                                ngModel name="phoneNumber">
+                            <div *ngIf="showError && phone.length < 10">
+                                <span class="text-danger">Số điện thoại phải có ít nhất 10 ký tự.</span>
+                            </div>
+                        </div>
+                        <div class="input_field checkbox_option mt-3">
+                            <input type="checkbox" id="cb2" (change)="(isChecked)"
+                                (change)="handleCheckboxChange($event)">
+                            <label for="cb2">Tôi chấp nhận các điều khoản và điều
+                                kiện</label>
+                        </div>
+                        <button class="btn btn-primary w-100 mt-3" [disabled]="!isChecked" type="submit">Đăng ký
+                            ngay</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--end-register-->
+</div>

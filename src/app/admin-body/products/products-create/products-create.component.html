@@ -1,0 +1,109 @@
+<div class="row justify-content-center m-3">
+    <form #f="ngForm">
+        <div class="row mt-3 justify-content-center">
+            <div class="col-3">
+                <div class="d-flex mb-3 align-items-center justify-content-center">
+                    <label style="margin-right: 100px;" for="imgInp">URL Ảnh 1</label>
+                    <img id="blah" width="80px" height="80px" />
+                </div>
+                <input required ngModel name="image1Url" class="form-control" id="imgInp" />
+            </div>
+            <div class="col-3">
+                <div class="d-flex mb-3 align-items-center justify-content-center">
+                    <label style="margin-right: 100px;" for="imgInp">URL Ảnh 2</label>
+                    <img id="blah" width="80px" height="80px" />
+                </div>
+                <input required ngModel name="image2Url" class="form-control" id="imgInp" />
+            </div>
+            <!-- <div class="col-3">
+                <img style="width: 80px;height: 80px;" id="blah" /><br>
+                <label for="imgInp">URL Ảnh 2</label>
+                <input required ngModel name="image2Url" class="form-control" id="imgInp" />
+            </div> -->
+            <div class="col-3">
+                <div class="d-flex mb-3 align-items-center justify-content-center">
+                    <label style="margin-right: 100px;" for="imgInp">URL Ảnh 3</label>
+                    <img id="blah" width="80px" height="80px" />
+                </div>
+                <input required ngModel name="image3Url" class="form-control" id="imgInp" />
+            </div>
+            <!--             
+            <div class="col-3">
+                <img id="blah" width="80px" height="80px" /><br>
+                <label for="imgInp">URL Ảnh 3</label>
+                <input required ngModel name="image3Url" class="form-control" id="imgInp" />
+            </div> -->
+        </div>
+
+
+        <div class="detail-admin ">
+            <div class="projects justify-content-center">
+                <div class="card-body">
+                    <div class="form-floating mt-3" style="z-index: 0;">
+                        <input type="text" ngModel name="productName" class="form-control" id="floatingInput"
+                            placeholder="Tên sản phẩm">
+                        <label for="floatingInput">Tên sản phẩm</label>
+                    </div>
+                    <!-- <input type="text" ngModel name="productName" placeholder="Tên sản phẩm" class="form-control"
+                        style="height: 40px; padding-left: 5px;" /><br> -->
+                    <label class="form-control mt-3" type="text" aria-label="Disabled input example" disabled
+                        readonly>Thời điểm
+                        thêm mới: {{ currentDate | date : "hh:mm:ss" }} {{ currentDate | date : "fullDate"
+                        }}</label><br>
+                    <div class="row justify-content-center align-items-center mb-3">
+                        <div class="col-3 form-check">
+                            <!-- checkbox size -->
+                            <input ngModel name="selectedSize1" (click)=" onSizeSClick(selectedSizeS)"
+                                class="form-check-input" type="checkbox" [value]="btnSizeS" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{ btnSizeS }}
+                            </label>
+                            <input style="border-radius: 8px; margin-left: 8px;" *ngIf="stateSizeS" ngModel
+                                name="Amount1" placeholder="Nhập số lượng Size S">
+                        </div>
+
+                        <div class="col-3 form-check">
+                            <input (click)=" onSizeMClick()" class="form-check-input" type="checkbox" [value]="btnSizeM"
+                                id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{ btnSizeM }}
+                            </label>
+                            <input style="border-radius: 8px; margin-left: 8px;" *ngIf="stateSizeM" ngModel
+                                name="Amount2" placeholder="Nhập số lượng Size M">
+                        </div>
+
+                        <div class="form-check col-3">
+                            <input (click)=" onSizeLClick()" class="form-check-input" type="checkbox" [value]="btnSizeL"
+                                id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{ btnSizeL }}
+                            </label>
+                            <input style="border-radius: 8px; margin-left: 8px;" *ngIf="stateSizeL" ngModel
+                                name="Amount3" placeholder="Nhập số lượng Size L">
+                        </div>
+                    </div>
+
+                    <input ngModel type="text" id="text" name="initialPrice" style="height: 48px;" class="form-control"
+                        placeholder="Giá sản phẩm" />
+
+                    <input type="text" ngModel id="fname" name="officialPrice" class="form-control mt-3"
+                        placeholder="Giá chính thức" style="height: 48px;" /><br>
+
+                    <div class="input-box ">
+                        <label for="cars">Danh mục sản phẩm:</label>
+
+                    </div>
+                    <select name="categoryId" [(ngModel)]="categoriesID" class="form-control">
+                        <option *ngFor="let item of cateLst" [value]="item.categoryId">{{item.categoryName}}</option>
+                    </select> <br>
+                    <textarea class="input-introd-prod form-control" ngModel name="productIntroduction"
+                        placeholder="Giới thiệu sản phẩm" rows="4"></textarea>
+                    <span style="color: red;"></span>
+                    <button (click)="CreateProduct(f)" type="submit" class="btn btn-success"
+                        style="width:100%;margin-top: 20px; height: 35px;">Lưu</button>
+                    <!-- <button  class="btn btn-danger" style="width: 29%; margin-left: 5px; height: 35px;">Xóa</button> -->
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

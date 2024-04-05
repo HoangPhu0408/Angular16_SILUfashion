@@ -1,0 +1,67 @@
+<!-- <div class="container login-modal" style="margin-top: 180px;">
+    <div class="login-box">
+        <div class="login-content" style="width: 450px; height: 400px; ">
+            <div style="padding-top: 32px;">
+                <h3>Xin chào !</h3>
+                <p class="text-secondary">Tạo một tài khoản để nhận được những ưu đãi tốt nhất từ chúng tôi</p>
+                <form #form="ngForm" (ngSubmit)="onLogIn(form)">
+                    <div class="form-group mb-3">
+                        <input name="phone" ngModel name="phonenumber" type="text" id="phonenumber" class="form-control"
+                            aria-describedby="emailHelp" placeholder="Số điện thoại (+84)" required>
+                        <div class="text-danger" *ngIf="showError && phone.length < 8">
+                            Mật khẩu phải có ít nhất 8 ký tự.
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input name="pass" ngModel name="password" type="password" class="form-control" id="password"
+                            placeholder="Mật khẩu" required>
+                        <div class="text-danger" *ngIf="showError && pass.length < 8">
+                            Mật khẩu phải có ít nhất 8 ký tự.
+                        </div>
+                    </div>
+                    <div *ngIf="errorMessage" style="color: red; margin: 10px 0;"> {{errorMessage}} </div>
+
+                    <button class="btn btn-primary mb-3" type="submit">Đăng nhập</button>
+                    <div class="register-box">
+                        <p>Bạn chưa có tài khoản ?</p>
+                        <a [routerLink]="['/register']" routerLinkActive="router-link-active">Đăng ký ngay</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="container form-signin justify-content-center align-items-center col-lg-5 col-lg-3"
+    style="margin-top: 200px;">
+    <form #form="ngForm" (ngSubmit)="onLogIn(form)">
+        <h2 class="mb-3 fw-normal text-center"><strong> ĐĂNG NHẬP </strong></h2>
+        <h6 class="mb-4 fw-normal text-center text-secondary">Đăng nhập bằng số điện thoại và mật khẩu của bạn</h6>
+        <div class="form-floating mb-3" style="z-index: 0;">
+            <input name="phone" ngModel name="phonenumber" type="text" id="phonenumber" class="form-control"
+                id="floatingInput" placeholder="9999999999" required>
+            <label for="floatingInput">Số điện thoại (+84) </label>
+            <span class="text-danger" *ngIf="showError && phone.length < 8">
+                Mật khẩu phải có ít nhất 8 ký tự.
+            </span>
+        </div>
+        <div class="form-floating" style="z-index: 0;">
+            <input name="pass" ngModel name="password" type="password" class="form-control" id="floatingPassword"
+                placeholder="Password" required>
+            <label for="floatingPassword">Mật khẩu</label>
+            <span class="text-danger" *ngIf="showError && pass.length < 8">
+                Mật khẩu phải có ít nhất 8 ký tự.
+            </span>
+        </div>
+
+        <div class="form-check text-start my-3" style="z-index: 0;">
+            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Nhớ tôi trên trình duyệt này
+            </label>
+        </div>
+        <div *ngIf="errorMessage" style="color: red; margin: 10px 0;"> {{errorMessage}} </div>
+        <button class="btn btn-primary w-100 py-2" type="submit">Đăng nhập</button>
+        <p class="mt-3 mb-3 text-body-secondary">Bạn chưa có tài khoản ?</p>
+        <a [routerLink]="['/register']" routerLinkActive="router-link-active">Đăng ký ngay</a>
+    </form>
+</div>

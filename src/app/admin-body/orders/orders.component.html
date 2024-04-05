@@ -1,0 +1,38 @@
+<div class="container mt-3">
+  <div>
+    <h2 class="text-center mb-3">Danh sách đơn hàng</h2>
+    <div>
+      <div class="row text-center border heading mb-3" style="font-weight: bold;border-radius: 8px;box-shadow: 4px;">
+        <div class="col-lg-2 py-3">Mã đơn hàng</div>
+        <div class="col-lg-2 py-3">Mã khách hàng</div>
+        <div class="col-lg-4 py-3">Địa chỉ</div>
+        <div class="col-lg-2 py-3">Trạng thái đơn hàng</div>
+      </div>
+    </div>
+    <div class="product-list-items ">
+      <!-- item-product -->
+      <div *ngFor="let item of orders">
+        <div class="row text-center border mt-2 bg-white" style="align-items: center;border-radius: 10px;">
+          <div class="col-lg-2">{{ item.orderId }}</div>
+          <div class="col-lg-2">{{ item.userId }}</div>
+          <div class="col-lg-4">{{ item.orderAddress }}</div>
+          <div class="col-lg-2">
+            <span class="text-success" *ngIf="item.orderStatus == 1">Đã xác nhận</span>
+            <span class="text-warning" *ngIf="item.orderStatus == 0">Chưa xác nhận</span>
+            <span class="text-danger" *ngIf="item.orderStatus == 2">Đã hủy</span>
+          </div>
+          <!-- <div class="col-lg-2">{{item | currency:'VND':'' }} đ</div> -->
+          <div class="col-lg-2">
+            <button class="btn btn-info m-2">
+              <a class="text-decoration-none text-white" [routerLink]="['/orders-detail', item.orderId]"><i
+                  class="bi bi-gear-wide-connected"></i> Xem chi tiết đơn
+                hàng</a>
+            </button>
+            <!-- <button class="btn btn-danger"><a class="text-decoration-none text-white" [routerLink]="['/products-delete']"><i class="bi bi-trash-fill"> Xóa</i></a></button> -->
+          </div>
+        </div>
+      </div>
+      <!-- item-product -->
+    </div>
+  </div>
+</div>

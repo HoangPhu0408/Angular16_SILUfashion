@@ -1,0 +1,43 @@
+<div>
+    <div>
+        <h2>Danh sách sản phẩm</h2>
+        <p>
+            <a class="btn btn-success" routerLink="/products-create">Thêm sản phẩm</a>
+        </p>
+        <div>
+            <div class="row text-center border heading py-2" style="font-weight: bold;">
+                <div class="col-lg-2">Hình ảnh</div>
+                <div class="col-lg-3">Tên sản phẩm</div>
+                <div class="col-lg-1">Size S</div>
+                <div class="col-lg-1">Size M</div>
+                <div class="col-lg-1">Size L</div>
+
+                <div class="col-lg-1">Giá bán</div>
+                <div class="col-lg-2">Công cụ</div>
+            </div>
+            <br>
+        </div>
+        <div class="product-list-items text-center">
+            <!-- item-product -->
+            <div class="border mb-3 list" *ngFor="let item of lstProduct" style="border-radius: 5px;">
+                <div class="row" style="align-items: center;">
+                    <div class="col-lg-2"><img [src]="item.imgPath1" width="120px" height="120px"></div>
+                    <div class="col-lg-3">{{item.productName}}</div>
+                    <div class="col-lg-1">{{item.amount1}}</div>
+                    <div class="col-lg-1">{{item.amount2}}</div>
+                    <div class="col-lg-1">{{item.amount3}}</div>
+                    <div class="col-lg-1">{{item.officialPrice | currency:'VND':'' }} VNĐ</div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-info m-2"><a class="text-decoration-none text-white"
+                                [routerLink]="['/products-edit',item.productId]"><i
+                                    class="bi bi-gear-wide-connected"></i> Sửa</a></button>
+                        <button class="btn btn-danger"><a class="text-decoration-none text-white"
+                                [routerLink]="['/products-delete',item.productId]"><i class="bi bi-trash-fill">
+                                    Xóa</i></a></button>
+                    </div>
+                </div>
+            </div>
+            <!-- item-product -->
+        </div>
+    </div>
+</div>
