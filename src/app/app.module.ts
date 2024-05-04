@@ -38,7 +38,7 @@ import { ThanksComponent } from './body/thanks/thanks.component';
 
 const routes: Routes = [
   { path: 'body', component: BodyComponent },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'product-list/:id', component: ProductListComponent },
   { path: 'product-list', component: ProductListComponent },
   { path: 'product-detail/:id', component: ProductDetailComponent },
@@ -110,4 +110,4 @@ const routes: Routes = [
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

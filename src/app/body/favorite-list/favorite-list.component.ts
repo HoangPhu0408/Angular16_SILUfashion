@@ -84,6 +84,6 @@ export class FavoriteListComponent implements OnInit {
   }
   getProductImg(productId: number): string {
     const product = this.productDetails.find((p) => p.productId === productId);
-    return product?.imgPath1 || '';
+    return 'https://localhost:7069/' + product?.imgPath1 || '';
   }
 }

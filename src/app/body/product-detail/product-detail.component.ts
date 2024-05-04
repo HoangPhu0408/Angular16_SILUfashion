@@ -55,8 +55,8 @@ export class ProductDetailComponent implements OnInit {
       this.product = this.productService
         .getProductIdAPI(this.productID)
         .subscribe((data: any) => {
-          this.currentImage = data.imgPath1;
-          this.thumbnailImages = [data.imgPath1, data.imgPath2, data.imgPath3];
+          this.currentImage = 'https://localhost:7069/'+ data.imgPath1;
+          this.thumbnailImages = ['https://localhost:7069/' + data.imgPath1, 'https://localhost:7069/' + data.imgPath2,'https://localhost:7069/'+ data.imgPath3];
         });
       this.productService
         .getProductIdAPI(this.productID)
@@ -152,7 +152,7 @@ export class ProductDetailComponent implements OnInit {
     // this.shoppingCart.AddToCart(this.product, this.countProd, this.selectedItem);
     // this.router.navigate(['/shopping-cart']);
     // alert(prodID)
-    alert(this.selectedItem);
+    //alert(this.selectedItem);
   }
   AddToFavorite(prod: any) {
     if (this.authen.customerLoginState) {

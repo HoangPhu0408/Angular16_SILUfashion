@@ -209,11 +209,11 @@
 <header class="consectetur ">
   <div class="justify-content-md-end" id="option-header">
     <!-- Navbar search -->
-    <a id="phone-number">
+    <a href="mailto: abc@gmail.com" id="phone-number">
       <i class="bi bi-envelope-fill"></i>
-      Contact us:
+      Contact us: abc@gmail.com
     </a>
-    <p><i class="bi bi-telephone-fill"></i> 0987654321</p>
+    <a href="tel: 0987654321"><i class="bi bi-telephone-fill"></i> 0987654321</a>
     <form id="header-search" (ngSubmit)="SearchSubmit(f)" #f="ngForm">
       <input type="text" ngModel name="search_string" type="search" class="searchbox" placeholder="Search..."
         aria-label="Search" id="option-header-search" />
@@ -228,7 +228,7 @@
     <div id="user" class="dropdown-center" *ngIf="customerState" style="cursor: default">
       <button class="btn rounded nav-link d-flex align-items-center" type="button" data-bs-toggle="dropdown"
         aria-expanded="false">
-        <i class="bi bi-person-fill" style="font-size: 16px"><strong> {{ client.userName }}
+        <i class="bi bi-person-fill" style="font-size: 16px"><strong> {{ clientName }}
           </strong></i>
       </button>
       <ul class="dropdown-menu">
@@ -267,7 +267,7 @@
     </div>
   </div>
   <div id="navbar">
-    <a routerLink="/home">
+    <a routerLink="/">
       <img src="assets/logoweb.jpg" alt="" width="280vw" />
     </a>
     <div class="dropdown" id="dropdown">

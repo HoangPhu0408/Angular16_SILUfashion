@@ -3,41 +3,28 @@
 
         <div class="row mt-3 justify-content-center">
             <div class="col-3">
-                <!-- <img id="blah" [src]="image1Url" alt="" width="80px" height="80px" /><br><br>
-                <input required [(ngModel)]="image1Url" name="image1Url" class="form-control" id="imgInp"
-                    style="width: 80px;" />
-                <label for="imgInp">URL Ảnh 1</label> -->
-
                 <div class="d-flex mb-3 align-items-center justify-content-center">
                     <label style="margin-right: 100px;" for="imgInp">URL Ảnh 1</label>
-                    <img id="blah" [src]="image1Url" width="80px" height="80px" />
+                    <!-- <img id="blah" [src]="'https://localhost:7069/' + image1Url" width="80px" height="80px" /> -->
                 </div>
-                <input required [(ngModel)]="image1Url" name="image1Url" class="form-control" id="imgInp" />
+                <input required name="image1" type="file" (change)="onFileChange($event, 1)" class="form-control" id="imgInp1"
+                    accept="image/*" />
             </div>
             <div class="col-3">
-                <!-- <img id="blah" [src]="image2Url" alt="" width="80px" height="80px" /><br><br>
-                <input required="" [(ngModel)]="image2Url" name="image2Url" class="form-control" id="imgInp"
-                    style="width: 80px;" />
-                <label for="imgInp">URL Ảnh 2</label> -->
-
                 <div class="d-flex mb-3 align-items-center justify-content-center">
                     <label style="margin-right: 100px;" for="imgInp">URL Ảnh 2</label>
-                    <img id="blah" [src]="image2Url" width="80px" height="80px" />
+                    <!-- <img id="blah" [src]="'https://localhost:7069/' + image2Url" width="80px" height="80px" /> -->
                 </div>
-                <input required [(ngModel)]="image2Url" name="image2Url" class="form-control" id="imgInp" />
-
+                <input required name="image2" type="file" (change)="onFileChange($event, 2)" class="form-control" id="imgInp1"
+                    accept="image/*" />
             </div>
             <div class="col-3">
-                <!-- <img id="blah" [src]="image3Url" alt="" width="80px" height="80px" /><br><br>
-                <input required [(ngModel)]="image3Url" name="image3Url" class="form-control" id="imgInp"
-                    style="width: 80px;" />
-                <label for="imgInp">URL Ảnh 3</label> -->
-
                 <div class="d-flex mb-3 align-items-center justify-content-center">
                     <label style="margin-right: 100px;" for="imgInp">URL Ảnh 3</label>
-                    <img id="blah" [src]="image3Url" width="80px" height="80px" />
+                    <!-- <img id="blah" [src]="'https://localhost:7069/' + image3Url" width="80px" height="80px" /> -->
                 </div>
-                <input required [(ngModel)]="image3Url" name="image3Url" class="form-control" id="imgInp" />
+                <input required name="image3" type="file" (change)="onFileChange($event, 3)" class="form-control" id="imgInp1"
+                    accept="image/*" />
             </div>
         </div>
 

@@ -21,7 +21,7 @@
             <!-- item-product -->
             <div class="border mb-3 list" *ngFor="let item of lstProduct" style="border-radius: 5px;">
                 <div class="row" style="align-items: center;">
-                    <div class="col-lg-2"><img [src]="item.imgPath1" width="120px" height="120px"></div>
+                    <div class="col-lg-2"><img [src]="'https://localhost:7069/'+ item.imgPath1" width="120px" height="120px"></div>
                     <div class="col-lg-3">{{item.productName}}</div>
                     <div class="col-lg-1">{{item.amount1}}</div>
                     <div class="col-lg-1">{{item.amount2}}</div>

@@ -10,10 +10,9 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductsEditComponent implements OnInit {
   product: any;
-
-  image1Url: string = "";
-  image2Url: string = "";
-  image3Url: string = "";
+  image1File: any;
+  image2File: any;
+  image3File: any;
   currentDate: any;
   cateProd: any;
   // categorySelected :string;
@@ -27,10 +26,6 @@ export class ProductsEditComponent implements OnInit {
       this.productService.getProductIdAPI(productID).subscribe((prod: any) => {
         {
           this.product = prod;
-
-          this.image1Url = this.product.imgPath1
-          this.image2Url = this.product.imgPath2
-          this.image3Url = this.product.imgPath3
         }
       });
       // alert(this.product)
@@ -52,28 +47,45 @@ export class ProductsEditComponent implements OnInit {
 
 
   EditProd() {
-    const editedProduct = {
+    const formData = new FormData();
+    formData.append('categoryId', this.product.categoryId);
+    formData.append('productName', this.product.productName);
+    formData.append('createdDate', this.product.createdDate);
+    formData.append('initialPrice', this.product.initialPrice);
+    formData.append('officialPrice', this.product.officialPrice);
+    formData.append('size1', 'S');
+    formData.append('size2', 'M');
+    formData.append('size3', 'L');
+    formData.append('amount1', this.product.amount1);
+    formData.append('amount2', this.product.amount2);
+    formData.append('amount3', this.product.amount3);
+    formData.append('introduction', this.product.introduction);
+    formData.append('image1', this.image1File);
+    formData.append('image2', this.image2File);
+    formData.append('image3', this.image3File);
 
-      categoryId: Number(this.product.categoryId),
-      productName: this.product.productName.toString(),
-      createdDate: this.product.createdDate.toString(),
-      initialPrice: Number(this.product.initialPrice),
-      officialPrice: Number(this.product.officialPrice),
-      size1: 'S',
-      size2: 'M',
-      size3: 'L',
-      amount1: Number(this.product.amount1),
-      amount2: Number(this.product.amount2),
-      amount3: Number(this.product.amount3),
-      introduction: this.product.introduction.toString(),
-      imgPath1: this.product.imgPath1,
-      imgPath2: this.product.imgPath2,
-      imgPath3: this.product.imgPath3
+    this.productService.putProductAPI(this.product.productId, formData).subscribe(() => {
+      alert('Lưu chỉnh sửa thành công');
+      this.router.navigate(['products']);
+    });
+  }
+  onFileChange(event: any, imageNumber: number) {
+    if (event.target.files && event.target.files.length) {
+      const file = event.target.files[0];
+      // Check file size, type, etc. if needed
+      switch (imageNumber) {
+        case 1:
+          this.image1File = file;
+          break;
+        case 2:
+          this.image2File = file;
+          break;
+        case 3:
+          this.image3File = file;
+          break;
+        default:
+          break;
+      }
     }
-    console.log(editedProduct)
-
-    this.productService.putProductAPI(Number(this.product.productId), editedProduct).subscribe();
-    alert('Lưu chỉnh sửa thành công');
-    this.router.navigate(['products'])
   }
 }

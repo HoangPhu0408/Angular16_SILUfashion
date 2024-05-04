@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
   client: any;
   clientName: any;
   clientid: any;
-  customerName: string = '';
   customerState: boolean = false;
   constructor(
     private productService: ProductService,
@@ -35,10 +34,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     // this.totalCart = this.shoppingCartService.GetTotalCart()
     this.authenticationService.userLoginEmitter.subscribe((event) => {
-      this.customerName = event;
+      this.clientName = event;
       this.clientid = this.authenticationService.getCurrentUser();
       this.cusService.getCustomerIdAPI(this.clientid).subscribe((data: any) => {
         this.client = data;
+        this.clientName = data['userName'];
         // console.log('headbla', this.client)
       });
     });

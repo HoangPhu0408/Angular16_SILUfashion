@@ -9,14 +9,11 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./products-create.component.css']
 })
 export class ProductsCreateComponent implements OnInit {
-  image1Url: string = "";
-  image2Url: string = "";
-  image3Url: string = "";
   product: any;
-  notification = "";
-
+  //notification = "";
+  productName: any;
   cateLst: any;
-  categoriesID = 1;
+  categoriesID = '1';
   showSalePrice: boolean = false;
   currentDate: any;
   selectedSizeS: string = '';
@@ -28,9 +25,15 @@ export class ProductsCreateComponent implements OnInit {
   btnSizeS = 'S';
   btnSizeM = 'M';
   btnSizeL = 'L';
-  countS: number = 0;
-  countM: number = 0;
-  countL: number = 0;
+  countS: any = 0;
+  countM: any = 0;
+  countL: any = 0;
+  image1File: any;
+  image2File: any;
+  image3File: any;
+  initialPrice: any;
+  officialPrice: any;
+  introduction: any;
   constructor(private productService: ProductService, private router: Router) { }
   ngOnInit(): void {
     this.productService.getCategoryListAPI().subscribe(cate => this.cateLst = cate)
@@ -77,35 +80,59 @@ export class ProductsCreateComponent implements OnInit {
   }
 
   CreateProduct(f: NgForm) {
-
-    if (f.value.productName != '') {
-      const dataProd = {
-        categoryId: Number(f.value.categoryId),
-        productName: f.value.productName,
-        createdDate: this.currentDate,
-        officialPrice: Number(f.value.officialPrice),
-        initialPrice: Number(f.value.initialPrice),
-        size1: 'S',
-        size2: 'M',
-        size3: 'L',
-        amount1: Number(f.value.Amount1),
-        amount2: Number(f.value.Amount2),
-        amount3: Number(f.value.Amount3),
-        introduction: f.value.productIntroduction,
-        imgPath1: f.value.image1Url,
-        imgPath2: f.value.image2Url,
-        imgPath3: f.value.image3Url
+    if (f.valid) {
+      const formData = new FormData();
+      formData.append('productId', '0');
+      formData.append('productName', this.productName);
+      formData.append('categoryId', this.categoriesID);
+      formData.append('size1', this.btnSizeS);
+      formData.append('size2', this.btnSizeM);
+      formData.append('size3', this.btnSizeL);
+      formData.append('Amount1', this.countS);
+      formData.append('Amount2', this.countM);
+      formData.append('Amount3', this.countL);
+      formData.append('initialPrice', this.initialPrice);
+      formData.append('officialPrice', this.officialPrice);
+      formData.append('introduction', this.introduction)
+      if (this.image1File) {
+        formData.append('image1', this.image1File, this.image1File.name);
       }
-      console.log(dataProd)
+      if (this.image2File) {
+        formData.append('image2', this.image2File, this.image2File.name);
+      }
+      if (this.image3File) {
+        formData.append('image3', this.image3File, this.image3File.name);
+      }
 
-      this.productService.postProductAPI(dataProd).subscribe()
-      alert('Thêm sản phẩm thành công')
-      console.log('sau thêm', this.selectedSizeS)
-
-      this.router.navigate(['/products']);
+      // Call the API to create the product
+      this.productService.postProductAPI(formData).subscribe(() => {
+        console.log(formData);
+        alert('Thêm sản phẩm thành công');
+        this.router.navigate(['/products']);
+      });
+    } else {
+      alert('Vui lòng nhập đầy đủ thông tin');
     }
-    else {
-      alert("Vui lòng nhập đầy đủ thông tin");
+  }
+
+  // Function to handle file input change event for images
+  onFileChange(event: any, imageNumber: number) {
+    if (event.target.files && event.target.files.length) {
+      const file = event.target.files[0];
+      // Check file size, type, etc. if needed
+      switch (imageNumber) {
+        case 1:
+          this.image1File = file;
+          break;
+        case 2:
+          this.image2File = file;
+          break;
+        case 3:
+          this.image3File = file;
+          break;
+        default:
+          break;
+      }
     }
   }
 }

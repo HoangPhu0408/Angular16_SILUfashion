@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
             this.authenticationService.userLogin
           );
         } else {
-          this.router.navigate(['home']);
+          this.router.navigate(['']);
           this.phonenumber = response.phoneNumber;
           this.authenticationService.customerInfo = response;
           this.authenticationService.customerLoginState = true;

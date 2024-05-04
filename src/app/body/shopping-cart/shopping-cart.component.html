@@ -98,8 +98,9 @@ end-cart -->
               <div class="col-lg-5">
                 <div class="me-lg-5">
                   <div class="d-flex">
-                    <img [routerLink]="['/product-detail', item.productID]" [src]="item.imgPath"
-                      class="border rounded me-3" style="width: 96px; height: 96px" />
+                    <img [routerLink]="['/product-detail', item.productID]"
+                      [src]="'https://localhost:7069/' + item.imgPath" class="border rounded me-3"
+                      style="width: 96px; height: 96px" />
                     <div class="">
                       <a class="nav-link">{{ item.productName }}</a>
                       <p class="text-muted">Size: {{ item.productSize }}</p>
@@ -177,7 +178,7 @@ end-cart -->
     <ng-template #noItems>
       <div class="row align-item-center justify-content-center">
         <h1 class="text-center mt-5 text-capitalize"><i class="bi bi-bag-x"></i> Giỏ hàng của bạn đang trống</h1>
-        <button class="btn btn-primary w-25 mt-5 py-3" routerLink="/product-list">Tiếp tục mua sắm</button>
+        <button class="btn btn-primary w-25 mt-5 py-3" [routerLink]="['/product-list']">Tiếp tục mua sắm</button>
       </div>
     </ng-template>
   </div>

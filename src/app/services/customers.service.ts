@@ -8,10 +8,10 @@ import { Customer } from '../model/customer.model';
 })
 export class CustomerService {
     constructor(private http: HttpClient) { }
-    getCustomersAPI(): Observable<any>{
+    getCustomersAPI(): Observable<any> {
         return this.http.get<any>('https://localhost:7069/api/Customers');
     }
-    getCustomerIdAPI(userId:number): any{
+    getCustomerIdAPI(userId: number): any {
         return this.http.get('https://localhost:7069/api/Customers/' + userId.toString());
     }
 

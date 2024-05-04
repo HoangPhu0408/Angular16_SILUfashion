@@ -336,7 +336,7 @@
           <h6 class="text-dark my-4">Giỏ hàng</h6>
           <div class="d-flex align-items-center mb-4" *ngFor="let item of cartItem; let i = index">
             <div class="me-3 position-relative">
-              <img src="{{ item.imgPath }}" style="height: 96px; width: 96x" class="img-sm rounded border" />
+              <img [src]="'https://localhost:7069/'+ item.imgPath" style="height: 96px; width: 96x" class="img-sm rounded border" />
             </div>
             <div class="">
               <a class="nav-link">

@@ -24,6 +24,7 @@ export class ProductsDeleteComponent implements OnInit {
 
   DeleteProduct() {
     this.productService.deleteProductAPI(this.productID).subscribe()
-    this.router.navigate(['/products'])
+    alert('Xóa thành công');
+    this.router.navigate(['/products']);
   }
 }
