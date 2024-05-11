@@ -21,7 +21,8 @@
             <!-- item-product -->
             <div class="border mb-3 list" *ngFor="let item of lstProduct" style="border-radius: 5px;">
                 <div class="row" style="align-items: center;">
-                    <div class="col-lg-2"><img [src]="'https://localhost:7069/'+ item.imgPath1" width="120px" height="120px"></div>
+                    <div class="col-lg-2"><img [src]="'https://localhost:7069/'+ item.imgPath1" width="120px"
+                            height="120px"></div>
                     <div class="col-lg-3">{{item.productName}}</div>
                     <div class="col-lg-1">{{item.amount1}}</div>
                     <div class="col-lg-1">{{item.amount2}}</div>
@@ -31,9 +32,32 @@
                         <button class="btn btn-info m-2"><a class="text-decoration-none text-white"
                                 [routerLink]="['/products-edit',item.productId]"><i
                                     class="bi bi-gear-wide-connected"></i> Sửa</a></button>
-                        <button class="btn btn-danger"><a class="text-decoration-none text-white"
-                                [routerLink]="['/products-delete',item.productId]"><i class="bi bi-trash-fill">
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"><a
+                                class="text-decoration-none text-white"><i class="bi bi-trash-fill">
                                     Xóa</i></a></button>
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Bạn có chắc chắn muốn xóa
+                                            sản phẩm</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Sản phẩm {{item.productName}} sẽ bị xóa vĩnh viễn</p>
+                                        <p class="text-danger">* Thao tác này không thể hoàn tác</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Đóng</button>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                            (click)="DeleteProduct(item.productId)">Xác nhận xóa</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
